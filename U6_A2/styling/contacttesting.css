@@ -1,0 +1,234 @@
+/* Applies box-sizing rule globally */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Your existing body and header styling */
+body {
+  background-color: #81CCA1;
+  margin: 0px;
+}
+
+header {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  left: 0;
+}
+
+nav {
+  border: 10px solid black;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  background-color: black;
+}
+
+nav button {
+  background-color: #558B6E;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#imgInfo {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+#img, #info {
+  margin: 5px;
+}
+
+#main {
+  margin-bottom: 10px;
+}
+
+.page-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-flex {
+  flex-grow: 1;
+}
+
+footer {
+  margin-top: auto;
+  border: 1px solid black;
+  background-color: #093A3E;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Contact form and FAQ layout */
+.contact-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Form container */
+.form-container {
+  width: 80%;
+  max-width: 600px;
+  background-color: #093A3E;
+  padding: 20px;
+  border: 2px solid #DD614A;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Other form styles */
+.form-title {
+  color: white;
+}
+
+.form-description {
+  color: white;
+  font-size: 20px;
+}
+
+.form-container label {
+  color: white;
+}
+
+/* Adjust the width of input fields */
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"] {
+  width: 100%; /* Makes the input fields take up the full width of the form container */
+  max-width: 400px; /* Optional: Set a max-width for consistency */
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Ensures email input validates email format */
+.form-container input[type="email"] {
+  /* can add specific styles for email input here if needed in future*/
+}
+
+/* Other styles for the form */
+.form-disclaimer {
+  color: white;
+}
+
+.registerbtn {
+  background-color: #ED2939;
+  border: 3px solid #D21F3C;
+  border-radius: 25px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+}
+
+.registerbtn:hover {
+  background-color: #D21F3C;
+}
+
+/* FAQ section */
+.faq-container {
+  background-color: #093A3E;
+  border: 2px solid #DD614A;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.faq-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  background-color: #558B6E;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.faq-question:hover {
+  background-color: #66a785;
+}
+
+.faq-answer {
+  display: none;
+  padding: 10px;
+  background-color: #0d4a4e;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+/* Social Media & Map Section */
+.social-section,
+.map-section {
+  background-color: #093A3E;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 30px;
+  border-top: 2px solid #DD614A;
+}
+
+.social-section h2,
+.map-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.social-feed {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.map-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 3px solid #DD614A;
+  border-radius: 10px;
+  overflow: hidden;
+}
