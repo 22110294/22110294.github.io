@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <--<![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Celtec Games - Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styling/blog.css" />
+  </head>
+
+  <body>
+    <header>
+      <!--Logo Controller-->
+      <a id="logo">
+        <img
+          src="https://i.ibb.co/695m6Gw/Celtec-Games-Logo.png"
+          alt="Celtec-Games-Logo"
+          border="0"
+          height="100px"
+          width="100px"
+        />
+      </a>
+      <h1 id="blogText">Welcome to our blog!</h1>
+    </header>
+
+    <!--Nav Bar and Buttons Section-->
+    <nav>
+      <center>
+        <a href="index.html"><button>Home</button ></a>
+        <a href="contact.html"><button>Contact Us</button></a>
+        <a href="products.html"><button>Products</button></a>
+        <a href="blog.html"><button>Blog</button></a>
+        <a href="about.html"><button>About Us</button></a>
+      </center>
+    </nav>
+
+    <!--Main Page Content-->
+    <main id="blogContent">
+      <section id="updates">
+        <h2>Latest Updates</h2>
+
+        <!-- Blog Posts -->
+        <div class="post">
+          <h3>🚧 CS2 – Anti-Cheat Overhaul</h3>
+          <p>VAC has been revamped for CS2, improving detection and punishment speeds.</p>
+          <small>Posted: April 3, 2025 by Valve</small>
+        </div>
+        
+        <div class="post">
+          <h3>🔧 Rust – New Vehicles Arrive</h3>
+          <p>Modular helicopters and watercraft expand gameplay options dramatically.</p>
+          <small>Posted: April 2, 2025 by Facepunch</small>
+        </div>
+        
+        <div class="post">
+          <h3>🧟 Dying Light – Co-op Improvements</h3>
+          <p>Improved syncing, shared loot pools, and new co-op modes.</p>
+          <small>Posted: April 1, 2025 by Techland</small>
+        </div>
+        
+        <div class="post">
+          <h3>🧱 Stardew Modding API Update</h3>
+          <p>SMAPI now supports content packs for easier customization.</p>
+          <small>Posted: March 20, 2025 by ConcernedApe</small>
+        </div>
+        
+        <div class="post">
+          <h3>🧟 Dying Light – Nightfall Expansion</h3>
+          <p>New weapons, quests, and nighttime horrors await in the latest DLC.</p>
+          <small>Posted: March 10, 2025 by Techland</small>
+        </div>
+        
+        <div class="post">
+          <h3>🗺️ Rust – Map Rotation System</h3>
+          <p>Servers now auto-rotate between pre-set custom maps weekly.</p>
+          <small>Posted: March 5, 2025 by Facepunch</small>
+        </div>
+        
+        <div class="post">
+          <h3>🔫 CS2 – Workshop Support</h3>
+          <p>Community-made maps and skins now accessible through the Steam Workshop.</p>
+          <small>Posted: February 28, 2025 by Valve</small>
+        </div>
+        
+        <div class="post">
+          <h3>🌾 Stardew Valley – Version 1.6 Released!</h3>
+          <p>New crops, modding tools, and end-game content have arrived with this major update.</p>
+          <small>Posted: February 26, 2024 by ConcernedApe</small>
+        </div>
+        
+        <div class="post">
+          <h3>🔫 CS2 Beta Launch</h3>
+          <p>Valve rolls out Source 2 engine updates and open beta to the community.</p>
+          <small>Posted: January 15, 2025 by Valve</small>
+        </div>
+
+         <!-- Pagination controls -->
+        <div class="pagination">
+          <button id="prevPage" onclick="changePage(-1)">Previous</button>
+          <span id="pageIndicator">Page 1 of 3</span>
+          <button id="nextPage" onclick="changePage(1)">Next</button>
+        </div>
+      </section>
+
+        <!-- Community chat section -->
+      <section id="chat">
+        <h2>Community Chat</h2>
+        <div id="chatBox"></div>
+         <!-- User input fields for name and message -->
+        <input type="text" id="chatName" placeholder="Your name..." />
+        <input type="text" id="chatInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+      </section>
+    </main>
+
+    <!--Footer part-->
+    <footer>
+      <p>
+        <center>
+          | COPYRIGHT © CELTEC 2025 | All Rights Reserved |
+          <a href="contact.html" style="text-decoration: underline;">Contact us</a>
+          |
+        </center>
+      </p>
+    </footer>
+
+    <script>
+      // Chat functionality
+      const chatBox = document.getElementById("chatBox");
+      const input = document.getElementById("chatInput");
+      const nameInput = document.getElementById("chatName");
+      const messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+
+      // Function to render chat messages from localStorage
+      function renderMessages() {
+        chatBox.innerHTML = "";
+        messages.forEach((msg) => {
+          const div = document.createElement("div");
+          div.classList.add("chatMsg");
+          div.innerHTML = `<strong>${msg.name}:</strong> ${msg.text}`;
+          chatBox.appendChild(div);
+        });
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+       // Function to send a message and save to localStorage
+      function sendMessage() {
+        const name = nameInput.value.trim() || "Anonymous";
+        const text = input.value.trim();
+        if (!text) return;
+
+        messages.push({ name, text });
+        localStorage.setItem("chatMessages", JSON.stringify(messages));
+        input.value = "";
+        renderMessages();
+      }
+
+      renderMessages();
+
+      // Pagination functionality
+      const postsPerPage = 3;
+      let currentPage = 1;
+
+      // Function to show the current page of blog posts
+      function showPage(page) {
+        const posts = document.querySelectorAll(".post");
+        const totalPages = Math.ceil(posts.length / postsPerPage);
+
+        posts.forEach((post, index) => {
+          post.style.display =
+            index >= (page - 1) * postsPerPage && index < page * postsPerPage
+              ? "block"
+              : "none";
+        });
+
+        // Enable/Disable pagination buttons based on current page
+        document.getElementById("prevPage").disabled = page === 1;
+        document.getElementById("nextPage").disabled = page === totalPages;
+        document.getElementById("pageIndicator").textContent = `Page ${page} of ${totalPages}`;
+      }
+
+      // Function to change pages when clicking pagination buttons
+      function changePage(delta) {
+        const posts = document.querySelectorAll(".post");
+        const totalPages = Math.ceil(posts.length / postsPerPage);
+
+        currentPage += delta;
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        showPage(currentPage);
+      }
+
+      showPage(currentPage);
+    </script>
+  </body>
+</html>
